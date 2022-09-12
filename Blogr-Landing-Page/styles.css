@@ -190,7 +190,7 @@ button {
 }
 
 .learn_more_button {
-    color: black;
+    color: white;
 }
 
 .transparent_button:hover {
@@ -204,7 +204,7 @@ main {
 
 .main_subtitle {
     text-align: center;
-    color: hsl(237, 17%, 21%);
+    color: hsl(235, 23%, 31%);
     font-size: clamp(2.5rem, 1.2vw + 1rem, 4.5rem);
 }
 
@@ -233,7 +233,7 @@ main {
     margin-left: 15%;
     font-size: clamp(2rem, 1.2vw + 1rem, 4rem);
     text-align: center;
-    color: hsl(237, 17%, 21%);
+    color: hsl(235, 23%, 31%);
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
@@ -249,7 +249,7 @@ main {
 }
 
 .para_img_combo_2 {
-    background-color: hsl(237, 17%, 21%);
+    background-color: hsl(238, 21%, 28%);
     background-image: url(./images/bg-pattern-circles.svg);
     background-position: center -50vw;
     background-size: calc(-1 * clamp(-150vw, 1vw + 1rem, -100vw));

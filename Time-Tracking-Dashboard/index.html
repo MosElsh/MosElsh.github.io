@@ -10,249 +10,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
 
     <title>Frontend Mentor | Time tracking dashboard</title>
 
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Rubik', sans-serif;
-        }
-
-        img {
-            width: auto;
-            height: auto;
-        }
-
-        body {
-            min-width: 100vw;
-            min-height: 100vh;
-            background: hsl(226, 43%, 10%);
-        }
-
-        main {
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile_and_settings_section {
-            padding: 1rem 0;
-        }
-
-        .profile {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            column-gap: 1.5rem;
-            background: hsl(246, 80%, 60%);
-            position: relative;
-            z-index: 1;
-            padding: 2rem 1.5rem;
-            border-radius: 0.625rem;
-            height: 70%;
-        }
-
-        .profile_image {
-            max-width: min(75px, 15vw);
-            max-height: min(75px, 15vw);
-            border-radius: 50%;
-            border: max(0.1vw, 2px) solid white;
-        }
-
-        .report_for {
-            font-size: clamp(0.75rem, 1vw, 1.25rem);
-            color: hsl(236, 100%, 87%);
-        }
-
-        .name {
-            font-size: clamp(1rem, 1.5vw + 1rem, 4rem);
-            color: white;
-            font-weight: 300;
-        }
-
-        .time_settings_section {
-            width: 100%;
-            padding: 1.5rem;
-            position: relative;
-            top: -0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: hsl(235, 46%, 20%);
-            border-bottom-left-radius: 0.625rem;
-            border-bottom-right-radius: 0.625rem;
-            font-weight: 300;
-            height: 30%;
-        }
-
-        .time_setting {
-            color: hsl(235, 45%, 61%);
-            font-weight: 300;
-            transition: 0.5s;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-        }
-
-        .time_setting.clicked {
-            color: white;
-        }
-
-        .time_setting:hover {
-            color: white;
-            cursor: pointer;
-        }
-
-        .tracking_section_container {
-            padding: 2vh 0;
-        }
-
-        .tracking_section_image_container {
-            width: 100%;
-            border-top-left-radius: 0.625rem;
-            border-top-right-radius: 0.625rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .work {
-            background: hsl(15, 100%, 70%);
-        }
-
-        .play {
-            background: hsl(195, 74%, 62%);
-        }
-
-        .study {
-            background: hsl(348, 100%, 68%);
-        }
-
-        .exercise {
-            background: hsl(145, 58%, 55%);
-        }
-
-        .social {
-            background: hsl(264, 64%, 52%);
-        }
-
-        .self_care {
-            background: hsl(43, 84%, 65%);
-        }
-
-        .tracking_information_container {
-            border-radius: 0.625rem;
-            position: relative;
-            z-index: 1;
-            margin-top: -0.5rem;
-            padding: 1rem 0;
-            background: hsl(235, 46%, 20%);
-            transition: 0.5s;
-            cursor: pointer;
-        }
-
-        .tracking_information_container:hover {
-            background: hsl(235, 45%, 61%);
-        }
-
-        .tracking_section_title_container, .figues_container {
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .tracking_section_title, .current {
-            color: white;
-        }
-
-        .tracking_section_title {
-            font-size: clamp(1.25rem, 1vw, 1.75rem);
-        }
-
-        .current {
-            font-size: clamp(2rem, 2vw + 1rem, 4rem);
-            font-weight: 300;
-        }
-
-        .ellipses {
-            min-width: 2vw;
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-        }
-
-        .ellipses:hover {
-            filter: brightness(0%) invert(100%);
-        }
-
-        .previous {
-            font-size: clamp(0.75rem, 1vw, 1.5rem);
-            color: hsl(236, 100%, 87%);
-        }
-
-        .attribution {
-            font-size: 11px;
-            text-align: center;
-            color: white;
-        }
-
-        .attribution a {
-            color: hsl(228, 45%, 44%);
-        }
-
-        #name_break {
-            display: none;
-        }
-
-        @media screen and (min-width: 1000px) {
-
-            .dashboard {
-                display: flex;
-            }
-
-            .profile_and_settings_section {
-                margin: 0 2rem;
-            }
-
-            .profile_info {
-                padding: 2rem 1rem;
-            }
-
-            .time_settings_section, .profile {
-                flex-flow: column;
-                align-items: flex-start;
-            }
-
-            .time_settings_section {
-                row-gap: 1rem;
-            }
-
-            .tracking_containers {
-                display: grid;
-                grid-template: repeat(2, 1fr) / repeat(3, 1fr);
-                column-gap: 2rem;
-            }
-
-            .tracking_section_container {
-                min-width: 15vw;
-            }
-
-            .figues_container {
-                flex-flow: column;
-                align-items: flex-start;
-            }
-            
-            #name_break {
-                display: block;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -262,7 +23,7 @@
             <div class="profile_and_settings_section">
                 <div class="profile">
                     <div class="profime_image_container">
-                        <img src="./images/image-jeremy.png" class="profile_image">
+                        <img src="./images/image-jeremy.png" class="profile_image" alt="profile_picture">
                     </div>
                     <div class="profile_info">
                         <span class="report_for">Report for</span><br>
@@ -278,12 +39,12 @@
             <div class="tracking_containers">
                 <div class="tracking_section_container">
                     <div class="tracking_section_image_container work">
-                        <img src="./images/icon-work.svg" class="tracking_section_image">
+                        <img src="./images/icon-work.svg" class="tracking_section_image" alt="work icon">
                     </div>
                     <div class="tracking_information_container">
                         <div class="tracking_section_title_container">
                             <span class="tracking_section_title">Work</span>
-                            <img src="./images/icon-ellipsis.svg" class="ellipses">
+                            <img src="./images/icon-ellipsis.svg" class="ellipses" alt="...">
                         </div>
                         <div class="figues_container">
                             <span class="current"></span>
@@ -293,12 +54,12 @@
                 </div>
                 <div class="tracking_section_container">
                     <div class="tracking_section_image_container play">
-                        <img src="./images/icon-play.svg" class="tracking_section_image">
+                        <img src="./images/icon-play.svg" class="tracking_section_image" alt="play icon">
                     </div>
                     <div class="tracking_information_container">
                         <div class="tracking_section_title_container">
                             <span class="tracking_section_title">Play</span>
-                            <img src="./images/icon-ellipsis.svg" class="ellipses">
+                            <img src="./images/icon-ellipsis.svg" class="ellipses" alt="...">
                         </div>
                         <div class="figues_container">
                             <span class="current"></span>
@@ -308,12 +69,12 @@
                 </div>
                 <div class="tracking_section_container">
                     <div class="tracking_section_image_container study">
-                        <img src="./images/icon-study.svg" class="tracking_section_image">
+                        <img src="./images/icon-study.svg" class="tracking_section_image" alt="study icon">
                     </div>
                     <div class="tracking_information_container">
                         <div class="tracking_section_title_container">
                             <span class="tracking_section_title">Study</span>
-                            <img src="./images/icon-ellipsis.svg" class="ellipses">
+                            <img src="./images/icon-ellipsis.svg" class="ellipses" alt="...">
                         </div>
                         <div class="figues_container">
                             <span class="current"></span>
@@ -323,12 +84,12 @@
                 </div>
                 <div class="tracking_section_container">
                     <div class="tracking_section_image_container exercise">
-                        <img src="./images/icon-exercise.svg" class="tracking_section_image">
+                        <img src="./images/icon-exercise.svg" class="tracking_section_image" alt="exercise icon">
                     </div>
                     <div class="tracking_information_container">
                         <div class="tracking_section_title_container">
                             <span class="tracking_section_title">Exercise</span>
-                            <img src="./images/icon-ellipsis.svg" class="ellipses">
+                            <img src="./images/icon-ellipsis.svg" class="ellipses" alt="...">
                         </div>
                         <div class="figues_container">
                             <span class="current"></span>
@@ -338,12 +99,12 @@
                 </div>
                 <div class="tracking_section_container">
                     <div class="tracking_section_image_container social">
-                        <img src="./images/icon-social.svg" class="tracking_section_image">
+                        <img src="./images/icon-social.svg" class="tracking_section_image" alt="social icon">
                     </div>
                     <div class="tracking_information_container">
                         <div class="tracking_section_title_container">
                             <span class="tracking_section_title">Social</span>
-                            <img src="./images/icon-ellipsis.svg" class="ellipses">
+                            <img src="./images/icon-ellipsis.svg" class="ellipses" alt="...">
                         </div>
                         <div class="figues_container">
                             <span class="current"></span>
@@ -353,12 +114,12 @@
                 </div>
                 <div class="tracking_section_container">
                     <div class="tracking_section_image_container self_care">
-                        <img src="./images/icon-self-care.svg" class="tracking_section_image">
+                        <img src="./images/icon-self-care.svg" class="tracking_section_image" alt="care icon">
                     </div>
                     <div class="tracking_information_container">
                         <div class="tracking_section_title_container">
                             <span class="tracking_section_title">Self Care</span>
-                            <img src="./images/icon-ellipsis.svg" class="ellipses">
+                            <img src="./images/icon-ellipsis.svg" class="ellipses" alt="...">
                         </div>
                         <div class="figues_container">
                             <span class="current"></span>
@@ -370,29 +131,14 @@
         </div>
     </main>
 
-    <div class="attribution">
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-        Coded by <a href="https://github.com/Em-ee24/" target="_blank">Em-ee24</a>.
-    </div>
+    <footer>
+        <div class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+            Coded by <a href="https://github.com/Em-ee24/" target="_blank">Em-ee24</a>.
+        </div>
+    </footer>
     <script src="./data.js"></script>
-    <script>
-
-        function update_data_displayed(chosen_time_setting_element) {
-            for (let x = 0; x < data.length; x++) {
-                document.getElementsByClassName('current')[x].innerHTML = String(data[x]['timeframes'][chosen_time_setting_element.id]['current']) + 'hrs'
-                document.getElementsByClassName('previous')[x].innerHTML = 'Previous ' + chosen_time_setting_element.getAttribute('sentence_filler') + ' - ' + String(data[x]['timeframes'][chosen_time_setting_element.id]['previous']) + 'hrs'
-            }
-        }
-
-        function toggle_time_setting(chosen_time_setting_element) {
-            /* Remove the 'clicked' class before setting it to avoid accidental remove of the new 'clicked' element. */
-            document.getElementsByClassName('clicked')[0].classList.remove('clicked')
-            chosen_time_setting_element.classList.add('clicked')
-            update_data_displayed(chosen_time_setting_element)
-        }
-
-        toggle_time_setting(document.getElementById('daily'))
-    </script>
+    <script src="./update_data.js"></script>
 </body>
 
 </html>

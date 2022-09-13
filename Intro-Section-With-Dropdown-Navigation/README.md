@@ -15,5 +15,4 @@ This is a solution to the [Intro section with dropdown navigation challenge on F
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- Mobile-first workflow
 - Javascript (vanilla)

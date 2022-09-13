@@ -4,7 +4,7 @@ This is a solution to the [Time tracking dashboard challenge on Frontend Mentor]
 
 ### Screenshot
 
-![Screenshot of Solution](./screenshot.jpg)
+![Screenshot of Solution](./screenshot.png)
 
 ### Links
 

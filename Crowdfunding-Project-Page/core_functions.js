@@ -64,7 +64,7 @@ function thank_you_modal_display(value_pledged = undefined, pledge_element_class
     let thank_you_section = document.createElement('div')
     thank_you_section.classList.add('thank_you_section')
     thank_you_section.innerHTML = `
-        <img src='` + document.getElementsByClassName('green_tick')[0].src + `' alt='Green Tick'>
+        <img src="` + document.getElementsByClassName('green_tick')[0].src + `" alt='Green Tick'>
         <h3 class='section_title thank_you_title'>
             Thanks for your support!
         </h3>
@@ -72,7 +72,7 @@ function thank_you_modal_display(value_pledged = undefined, pledge_element_class
             Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
             an email once our campaign is completed.
         </span>
-        <button class='green_button got_it_button' onclick = 'toggle_modal_display()'>
+        <button class='green_button got_it_button' onclick='toggle_modal_display()'>
             Got it!
         </button>
     `

@@ -64,7 +64,7 @@ function thank_you_modal_display(value_pledged = undefined, pledge_element_class
     let thank_you_section = document.createElement('div')
     thank_you_section.classList.add('thank_you_section')
     thank_you_section.innerHTML = `
-        <img src='` + String(document.location.href).replace('index.html', 'images/icon-check.svg') + `'>
+        <img src='` + String(document.location.href).replace('index.html', 'images/icon-check.svg') + `' alt='Green Tick'>
         <h3 class='section_title thank_you_title'>
             Thanks for your support!
         </h3>

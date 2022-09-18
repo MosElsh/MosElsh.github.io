@@ -8,8 +8,7 @@ This is a solution to the [Testimonials grid section challenge on Frontend Mento
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://github.com/Em-ee24/Em-ee24.github.io/tree/master/Testimonials-Grid-Section](https://github.com/Em-ee24/Em-ee24.github.io/tree/master/Testimonials-Grid-Section)
 
 ### Built with
 

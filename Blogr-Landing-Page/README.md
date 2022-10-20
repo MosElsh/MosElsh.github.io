@@ -8,7 +8,7 @@ This is a solution to the [Blogr landing page challenge on Frontend Mentor](http
 
 ### Links
 
-- Live Site URL: [https://em-ee24.github.io/Blogr-Landing-Page/](https://em-ee24.github.io/Blogr-Landing-Page/)
+- Live Site URL: [https://MosElsh.github.io/Blogr-Landing-Page/](https://MosElsh.github.io/Blogr-Landing-Page/)
 
 ### Built with
 

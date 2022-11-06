@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Mentor REST Countries API</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="light">
+
+    <header class="light">
+        <div class="title_container light">
+            <h1 class="title light text">Where in the world?</h1>
+        </div>
+        <div class="dark_mode_toggle_container light">
+            <span class="dark_mode_toggle light" onclick="toggle_dark_mode()">
+                <span class="material-icons dark_mode_icon light text">dark_mode</span> <span class="dark_mode_text light text">Dark Mode </span>
+            </span>
+        </div>
+    </header>
+
+    <div class="basic_country_data_content light">
+        <div class="filters_section light">
+            <div class="input_container filter_by_name_container light">
+                <span class="material-icons-outlined light search_icon text" onclick="filter_by_name()">search</span>
+                <input name="filter_by_name" class="light text" placeholder="Search for a country...">
+            </div>
+            <div class="region_filter_container light">
+                <div class="dropdown_section light">
+                    <div class="selected_value_section light" onclick="toggle_region_filters_display()">
+                        <span class="selected_value light text">Filter by Region</span>
+                        <span class="expand_shrink_icon light text">&#x25BC;</span>
+                    </div>
+                    <div class="available_options light">
+                        <span class="option light text" onclick="update_region_filter(this.innerHTML)">Africa</span>
+                        <span class="option light text" onclick="update_region_filter(this.innerHTML)">Americas</span>
+                        <span class="option light text" onclick="update_region_filter(this.innerHTML)">Asia</span>
+                        <span class="option light text" onclick="update_region_filter(this.innerHTML)">Europe</span>
+                        <span class="option light text" onclick="update_region_filter(this.innerHTML)">Oceania</span>
+                        <span class="option light text" onclick="update_region_filter(this.innerHTML)">Antarctic</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="basic_country_data_section light">
+
+        </div>
+    </div>
+
+    <div class="full_country_data light">
+        <div class="back_button_container">
+            <button class="back_button light text" onclick="display_all_countries()"> <span class="material-icons light back_arrow">keyboard_backspace</span> Back</button>
+        </div>
+    </div>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script src="theme_switcher.js"></script>
+    <script src="filter_functions.js"></script>
+    <script src="country_cards_functions.js"></script>
+    <script src="full_country_data_functions.js"></script>
+    <script src="network_handler.js"></script>
+</body>
+</html>

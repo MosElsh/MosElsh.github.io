@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Frontend Mentor | Intro section with dropdown navigation</title>
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Epilogue', sans-serif;
+        }
+
+        body, html {
+            min-height: 100vh;
+            background: rgb(250, 250, 250);
+        }
+
+        img {
+            width: auto;
+            height: auto;
+        }
+
+        header {
+            padding-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 2%;
+        }
+
+        .left_header_section {
+            display: flex;
+            align-items: center;
+            column-gap: 1.25rem;
+        }
+
+        .header_logo {
+            min-width: 100px;
+        }
+
+        .desktop_nav {
+            display: flex;
+            column-gap: 1rem;
+        }
+
+        .menu_icon_container {
+            display: none;
+        }
+
+        .menu_icon {
+            cursor: pointer;
+            font-size: clamp(2rem, 1vw + 0.5rem, 3rem);
+        }
+
+        .mobile_nav_container {
+			display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            min-width: 100%;
+            min-height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile_nav {
+            position: absolute;
+            right: 0%;
+            width: 65%;
+            height: 100%;
+            background: white;
+        }
+
+        .mobile_nav * {
+            top: 1%;
+            padding: 0.25rem 0;
+        }
+
+        .close_nav {
+            min-width: 100%;
+            text-align: right;
+            cursor: pointer;
+            font-size: clamp(2rem, 1vw, 3rem);
+        }
+
+        .section_heading_combo {
+            display: flex;
+            align-items: center;
+            column-gap: 1.25rem;
+            margin-left: 1rem;
+            cursor: pointer;
+            transition: 0.5s;
+            color: hsl(0, 0%, 41%);
+            font-size: 1rem;
+            max-width: min-content;
+        }
+
+        .section_heading_combo:hover {
+            color: black;
+            filter: brightness(0) saturate(100%);
+        }
+
+        .features_list_mobile, .company_info_list_mobile {
+            margin-left: 3rem;
+            display: none;
+            transition: 0.5s;
+            max-height: 0;
+        }
+
+        .features_list_desktop, .company_info_list_desktop {
+            display: none;
+            max-height: 0;
+            transition: 0.5s;
+            text-align: right;
+        }
+
+        .features_list_desktop_container, .company_info_list_desktop_container {
+            margin-left: -10rem;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            position: absolute;
+            border-radius: 10px;
+		   box-shadow: 0px 5px 15px 5px rgba(0,0,0,0.2);
+        }
+
+        .company_info_list_desktop_container {
+            margin-left: -8rem;
+        }
+
+        .features_list_desktop_container *, .company_info_list_desktop_container * {
+            padding: 0.25rem 0;
+        }
+
+        .icon_text_combo {
+            display: flex;
+            align-items: center;
+            column-gap: 1rem;
+            color: hsl(0, 0%, 41%);
+            font-size: 1rem;
+        }
+
+        .authentication_redirect_section_desktop {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 2rem;
+        }
+
+        .authentication_redirect_section_mobile {
+            text-align: center;
+            color: hsl(0, 0%, 41%);
+            padding: 10px 0;
+        }
+
+        .login_link {
+            cursor: pointer;
+            transition: 0.5s;
+            min-width: min-content;
+            color: hsl(0, 0%, 41%);
+        }
+
+        .login_link:hover {
+            color: black;
+        }
+
+        .header_button {
+            color: hsl(0, 0%, 41%);
+            border: 0.125rem hsl(0, 0%, 41%) solid;
+            width: 90%;
+            height: 2.5rem;
+            font-size: 1rem;
+            padding: 0 1rem;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .header_button:hover {
+            color: black;
+            border-color: black;
+        }
+
+		main {
+			padding: 5vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			column-gap: 2rem;
+		}
+
+		.main_section:first-of-type {
+			width: 40%;
+			row-gap: 4rem;
+			display: flex;
+			flex-flow: column;
+			justify-content: space-between;
+		}
+
+		.hero_image_desktop {
+			max-width: 60vh;
+		}
+
+		.hero_image_mobile {
+			display: none;
+		}
+
+		.section_title {
+			font-size: clamp(3rem, 4vw + 1rem, 8rem);
+		}
+
+		.section_description {
+			font-size: 1.2rem;
+			color: hsl(0, 0%, 41%);
+			display: block;
+			width: 80%;
+			line-height: 1.5rem;
+		}
+
+		.learn_more_button {
+			width: max-content;
+			padding: 0.625rem 1rem;
+			background: black;
+			color: white;
+			font-size: 1rem;
+			border: 2px solid black;
+			border-radius: 10px;
+			transition: 0.5s;
+			cursor: pointer;
+		}
+
+		.learn_more_button:hover {
+			background: transparent;
+			color: black;
+		}
+
+		.client_logos_container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			row-gap: 1rem;
+			column-gap: 1rem;
+		}
+
+        @media screen and (max-width: 750px) {
+            .desktop_nav, .right_header_section {
+                display: none;
+            }
+
+            .menu_icon_container {
+                display: unset;
+            }
+
+            .header_button {
+                background: white;
+            }
+
+		   .hero_image_mobile {
+		    		display: block;
+				max-width: 100%;
+		   }
+
+			.hero_image_desktop {
+				display: none;
+			}
+
+			main {
+				flex-flow: column-reverse;
+				row-gap: 2rem;
+			}
+
+			.main_section:first-of-type {
+				width: unset;
+				text-align: center;
+				row-gap: 2rem;
+			}
+
+			.section_description {
+				width: 90%;
+				margin-left: 5%;
+			}
+
+			.client_logos_container {
+				width: 96%;
+				margin-left: 2%;
+			}
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--Features
+    Company
+    Careers
+    About
+
+    Login
+    Register
+
+    Make remote work
+
+    Get your team in sync, no matter your location. Streamline processes,
+    create team rituals, and watch productivity soar.
+
+    Learn more-->
+
+    <header>
+        <div class="left_header_section">
+            <div class="logo_container">
+                <img src="./images/logo.svg" class="header_logo">
+            </div>
+            <div class="desktop_nav_container">
+                <nav class="desktop_nav">
+                    <div class="section_heading_combo" arrow="down" onclick="toggle_selected_popup('features_list_desktop', this.getElementsByTagName('img')[0], this)">
+                        <span class="heading">Features</span>
+                        <img src="./images/icon-arrow-down.svg">
+                    </div>
+                    <div class="features_list_desktop popups">
+                        <div class="features_list_desktop_container">
+                            <div class="icon_text_combo">
+                                <img src="./images/icon-todo.svg" class="feature_icon">
+                                <span class="icon_text">Todo List</span>
+                            </div>
+                            <div class="icon_text_combo">
+                                <img src="./images/icon-calendar.svg" class="feature_icon">
+                                <span class="icon_text">Calendar</span>
+                            </div>
+                            <div class="icon_text_combo">
+                                <img src="./images/icon-reminders.svg" class="feature_icon">
+                                <span class="icon_text">Reminders</span>
+                            </div>
+                            <div class="icon_text_combo">
+                                <img src="./images/icon-planning.svg" class="feature_icon">
+                                <span class="icon_text">Planning</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section_heading_combo" arrow="down" onclick="toggle_selected_popup('company_info_list_desktop', this.getElementsByTagName('img')[0], this)">
+                        <span class="heading">Company</span>
+                        <img src="./images/icon-arrow-down.svg">
+                    </div>
+                    <div class="company_info_list_desktop popups">
+                        <div class="company_info_list_desktop_container">
+                            <div class="icon_text_combo">
+                                <span class="icon_text">History</span>
+                            </div>
+                            <div class="icon_text_combo">
+                                <span class="icon_text">Our Team</span>
+                            </div>
+                            <div class="icon_text_combo">
+                                <span class="icon_text">Blog</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section_heading_combo">
+                        <span class="heading">Careers</span>
+                    </div>
+                    <div class="section_heading_combo">
+                        <span class="heading">About</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="right_header_section">
+            <div class="authentication_redirect_section_desktop">
+                <span class="login_link">Login</span>
+                <button class='header_button'>Register</button>
+            </div>
+        </div>
+        <div class="menu_icon_container">
+            <span class="material-icons menu_icon" onclick="show_mobile_nav()">menu</span>
+        </div>
+        <div class="mobile_nav_container">
+            <nav class="mobile_nav">
+                <span class="material-icons close_nav" onclick="remove_mobile_nav()">close</span>
+                <div class="section_heading_combo" arrow="down" onclick="toggle_selected_popup('features_list_mobile', this.getElementsByTagName('img')[0], this)">
+                    <span class="heading">Features</span>
+                    <img src="./images/icon-arrow-down.svg">
+                </div>
+                <div class="features_list_mobile popups">
+                    <div class="features_list_mobile_container">
+                        <div class="icon_text_combo">
+                            <img src="./images/icon-todo.svg" class="feature_icon">
+                            <span class="icon_text">Todo List</span>
+                        </div>
+                        <div class="icon_text_combo">
+                            <img src="./images/icon-calendar.svg" class="feature_icon">
+                            <span class="icon_text">Calendar</span>
+                        </div>
+                        <div class="icon_text_combo">
+                            <img src="./images/icon-reminders.svg" class="feature_icon">
+                            <span class="icon_text">Reminders</span>
+                        </div>
+                        <div class="icon_text_combo">
+                            <img src="./images/icon-planning.svg" class="feature_icon">
+                            <span class="icon_text">Planning</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="section_heading_combo" arrow="down" onclick="toggle_selected_popup('company_info_list_mobile', this.getElementsByTagName('img')[0], this)">
+                    <span class="heading">Company</span>
+                    <img src="./images/icon-arrow-down.svg">
+                </div>
+                <div class="company_info_list_mobile popups">
+                    <div class="company_info_list_mobile_container">
+                        <div class="icon_text_combo">
+                            <span class="icon_text">History</span>
+                        </div>
+                        <div class="icon_text_combo">
+                            <span class="icon_text">Our Team</span>
+                        </div>
+                        <div class="icon_text_combo">
+                            <span class="icon_text">Blog</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="section_heading_combo">
+                    <span class="heading">Careers</span>
+                </div>
+                <div class="section_heading_combo">
+                    <span class="heading">About</span>
+                </div>
+                <div class="authentication_redirect_section_mobile">
+                    <span class="login_link">Login</span><br><br>
+                    <button class='header_button'>Register</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+	<main>
+		<div class="text_container main_section">
+			<h1 class='section_title'>Make remote work</h1>
+			<span class='section_description'>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</span>
+			<div class='main_button_container'>
+				<button class='learn_more_button'>Learn More</button>
+			</div>
+			<div class='client_logos_container'>
+				<img src='./images/client-databiz.svg' class='client_logo'>
+				<img src='./images/client-audiophile.svg' class='client_logo'>
+				<img src='./images/client-meet.svg' class='client_logo'>
+				<img src='./images/client-maker.svg' class='client_logo'>
+			</div>
+		</div>
+		<div class="hero_image_container main_section">
+			<img src='./images/image-hero-desktop.png' class='hero_image_desktop'>
+			<img src='./images/image-hero-mobile.png' class='hero_image_mobile'>
+		</div>
+	</main>
+
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/MosElsh" target='_blank'>MosElsh</a>.
+    </div>
+
+    <script>
+        function show_mobile_nav() {
+	    	document.getElementsByClassName('mobile_nav_container')[0].style.display = 'block';
+            document.getElementsByClassName('mobile_nav_container')[0].animate(
+                [
+                    {left: '100%'},
+                    {left: '0%'}
+                ],
+                {
+                    duration: 500,
+                    easing: 'ease-out',
+                    fill: 'forwards',
+                }
+            )
+        }
+
+        function remove_mobile_nav() {
+            document.getElementsByClassName('mobile_nav_container')[0].animate(
+                [
+                    {left: '0%'},
+                    {left: '100%'},
+                ],
+                {
+                    duration: 500,
+                    easing: 'ease-out',
+                    fill: 'forwards',
+                }
+            )
+	    	setTimeout(() => {document.getElementsByClassName('mobile_nav_container')[0].style.display = 'none'}, 500)
+        }
+
+        function toggle_selected_popup(selected_popup, element_clicked_icon, element_clicked) {
+            let arrow_shown = element_clicked.getAttribute('arrow')
+            let new_arrow = (arrow_shown == 'down' ? 'up': 'down')
+            element_clicked.setAttribute('arrow', new_arrow)
+            element_clicked_icon.src = String(element_clicked_icon.getAttribute('src')).replace(arrow_shown, new_arrow)
+            document.getElementsByClassName(selected_popup)[0].style.display = document.getElementsByClassName(selected_popup)[0].style.display == '' ? 'block': ''
+            document.getElementsByClassName(selected_popup)[0].style.maxHeight = String(document.getElementsByClassName(selected_popup + '_container')[0].offsetHeight) + 'px'
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Frontend Mentor | Sunnyside agency landing page</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: 0.5s;
+        }
+
+        img {
+            width: auto;
+            height: auto;
+        }
+
+        body {
+            background: rgb(255, 251, 248);
+        }
+
+        header {
+            background: rgb(0, 190, 255);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 5vh 2rem 5vh 2rem;
+        }
+
+        .header_logo, .footer_logo {
+            min-width: 15vw;
+        }
+
+        .desktop_nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 2rem;
+        }
+
+        .header_link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .header_button {
+            font-size: 0.75rem;
+            border: none;
+            border-radius: 1.25rem;
+            font-family: 'Fraunces', serif;
+            padding: 0.75rem 1.5rem;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .header_button_desktop {
+            color: black;
+            background: white;
+        }
+
+        .header_button_desktop:hover {
+            color: white;
+            background: rgb(86, 208, 255);
+        }
+
+        .menu_icon_container {
+            display: none;
+        }
+
+        .menu_icon {
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .mobile_nav {
+            background: white;
+            width: 98%;
+            position: relative;
+            margin-top: 1rem;
+            max-height: 0;
+            transition: 0.5s;
+            transition-timing-function: ease-out;
+            display: none;
+        }
+
+        .mobile_nav_container {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            row-gap: 0.625rem;
+            padding-bottom: 1rem;
+        }
+
+        .right_angled_triangle_character {
+            align-self: flex-end;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            margin-top: -2rem;
+            left: 4px;
+            text-align: right;
+            width: 100%;
+        }
+
+        .mobile_header_link {
+            color: hsl(210, 4%, 67%);
+        }
+
+        .header_button_mobile {
+            color: hsl(212, 27%, 19%);
+            background: hsl(51, 100%, 49%);
+        }
+
+        .top_main_section {
+            text-align: center;
+            min-height: calc(500px + 10vh);
+            background-position: center 150px, bottom center;
+            background-image: url(./images/icon-arrow-down.svg), url(./images/desktop/image-header.jpg);
+            background-repeat: no-repeat, no-repeat;
+            background-size: auto, 1440px;
+            background-color: rgb(0, 190, 255);
+        }
+
+        .section_title {
+            font-family: 'Fraunces', serif;
+        }
+
+        .main_title {
+            color: white;
+            padding-bottom: 10vh;
+            font-weight: 900;
+            font-size: clamp(3rem, 2vw + 1rem, 5rem);
+        }
+
+        .image_text_combo_section {
+            display: flex;
+            align-items: center;
+        }
+
+        .image_text_combo_section:first-child, .image_text_combo_section:last-child {
+            min-width: 50vw;
+        }
+
+        .image_container {
+            min-height: 60vh;
+        }
+
+        .section_1 .image_container {
+            min-width: 50vw;
+            min-height: 75vh;
+            background-image: url(./images/desktop/image-transform.jpg);
+            background-color: hsl(51, 100%, 49%);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: min(max(50vw, 450px), min(50vw, 450px)) min(max(60vh, 500px), min(60vh, 500px));
+        }
+
+        .section_2 .image_container {
+            min-width: 50vw;
+            min-height: 75vh;
+            background-color: hsl(7, 99%, 70%);
+            background-image: url(./images/mobile/image-stand-out.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: min(max(50vw, 450px), min(50vw, 450px)) min(max(60vh, 500px), min(60vh, 500px));
+        }
+
+        .section_3 .image_container {
+            min-width: 50vw;
+            min-height: 75vh;
+            background-image: url(./images/desktop/image-graphic-design.jpg);
+            background-color: rgb(133, 223, 208);
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: min(max(50vw, 450px), min(50vw, 450px)) min(max(50vh, 475px), min(50vh, 475px));
+        }
+
+        .section_4, .image_container {
+            min-width: 50vw;
+            min-height: 75vh;
+            background-image: url(./images/desktop/image-photography.jpg);
+            background-color: rgb(64, 204, 255);
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: min(max(50vw, 450px), min(50vw, 450px)) min(max(50vh, 450px), min(50vh, 450px));
+        }
+
+        .text_container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-flow: column;
+            row-gap: 2rem;
+            width: 100%;
+        }
+
+        .text_image_combo_title {
+            font-size: clamp(2rem, 1vw + 1rem, 4rem);
+            width: 80%;
+            margin-left: 15%;
+        }
+
+        .text_image_combo_description {
+            width: 70%;
+            margin-left: 15%;
+            font-size: 1rem;
+            color: hsl(210, 4%, 67%);
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .learn_more_link {
+            border: none;
+            text-decoration: none;
+            color: hsl(212, 27%, 19%);
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            margin-left: 15%;
+        }
+
+        .learn_more_link::after {
+            display: block;
+            content: ' ';
+            height: 0.5rem;
+            width: 110%;
+            position: relative;
+            top: -0.25rem;
+            left: -5%;
+            border-radius: 0.625rem;
+            transition: 0.5s;
+        }
+
+        .section_1 .learn_more_link::after {
+            background: hsla(51, 100%, 49%, 0.3);
+        }
+
+        .section_1 .learn_more_link:hover::after {
+            background: hsl(51, 100%, 49%);
+        }
+
+        .section_2 .learn_more_link::after {
+            background: hsla(7, 99%, 70%, 0.3);
+        }
+
+        .section_2 .learn_more_link:hover::after {
+            background: hsl(7, 99%, 70%);
+        }
+
+        .text_inside_image_container {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: flex-end;
+            row-gap: 1rem;
+            padding: 5vh 0;
+        }
+
+        .section_3 .text_inside_image_title {
+            font-size: clamp(2rem, 1vw + 1rem, 4rem);
+            color: hsl(167, 40%, 24%);
+        }
+
+        .section_3, .text_inside_image_description {
+            color: hsl(167, 40%, 24%);
+            font-size: 1rem;
+            text-align: center;
+            display: block;
+            font-family: 'Barlow', sans-serif;
+            width: 60%;
+        }
+
+        .section_4 .text_inside_image_title {
+            font-size: clamp(2rem, 1vw + 1rem, 4rem);
+            color: hsl(198, 62%, 26%);
+        }
+
+        .section_4, .text_inside_image_description {
+            color: hsl(198, 62%, 26%);
+            font-size: 1rem;
+            text-align: center;
+            display: block;
+            font-family: 'Barlow', sans-serif;
+            width: 60%;
+        }
+
+        .testimonials_section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            padding: 15vh 0;
+        }
+
+        .testimonials_opener_title {
+            padding-bottom: 5vh;
+            color: hsl(210, 4%, 67%);
+            letter-spacing: 3px;
+        }
+
+        .testimonials_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 2rem;
+            row-gap: 2rem;
+        }
+
+        .testimonial {
+            width: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+            row-gap: 3rem;
+        }
+
+        .client_image {
+            max-width: 5vw;
+            max-height: 5vw;
+            border-radius: 50%;
+        }
+
+        .testimonial_description {
+            text-align: center;
+            font-family: 'Barlow', sans-serif;
+            font-size: 1rem;
+            color: hsl(213, 9%, 39%);
+        }
+
+        .client_info {
+            text-align: center;
+        }
+
+        .client_name {
+            color: hsl(212, 27%, 19%);
+            font-size: 1rem;
+            font-family: 'Fraunces', serif;
+        }
+
+        .client_role {
+            color: hsl(210, 4%, 67%);
+            font-size: 0.75rem;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .product_examples_section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product_example_image {
+            max-width: 25vw;
+        }
+
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+
+        footer {
+            background: rgb(123, 218, 199);
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            row-gap: 2rem;
+            padding: 10vh 0;
+        }
+
+        .footer_links {
+            display: flex;
+            column-gap: 2rem;
+        }
+
+        .footer_link {
+            text-decoration: none;
+            color: hsl(213, 9%, 39%);
+            font-family: 'Barlow', sans-serif;
+            font-size: 1rem;
+            transition: 0.5s;
+        }
+
+        .footer_link:hover {
+            color: white;
+        }
+
+        .social_links {
+            padding-top: 3vh;
+            display: flex;
+            column-gap: 1.5rem;
+        }
+
+        .social_link {
+            text-decoration: none;
+        }
+
+        .social_icon {
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0s;
+        }
+    
+        .social_icon:hover {
+            filter: brightness(100) saturate(100);
+        }
+
+        @media screen and (max-width: 550px) {
+            .desktop_nav {
+                display: none;
+            }
+
+            .menu_icon_container {
+                display: block;
+            }
+
+            .image_text_combo_section {
+                flex-flow: column;
+            }
+
+            .section_1 .image_container, .section_2 .image_container, .text_container {
+                min-width: 100vw;
+                min-height: 300px;
+            }
+
+            .section_1 .image_container, .section_2 .image_container, .section_3 .image_container, .section_4 .image_container {
+                background-size: 100vw min(max(60vh, 500px), min(60vh, 500px));
+            }
+
+            .section_3 .image_container, .section_4 .image_container {
+                min-width: 100vw;
+                min-height: 400px;
+            }
+
+            .section_1 {
+                flex-flow: column-reverse;
+            }
+
+            .text_on_image_section_container {
+                display: flex;
+                align-items: flex-start;
+            }
+
+            .text_container {
+                align-items: center;
+            }
+
+            .text_image_combo_description, .text_image_combo_title, .learn_more_link {
+                margin-left: unset;
+                width: unset;
+                text-align: center;
+            }
+
+            .testimonials_container {
+                flex-flow: column;
+            }
+
+            .testimonial {
+                width: 95%;
+            }
+
+            .client_image {
+                max-width: 15vw;
+                max-height: 15vw;
+            }
+            
+            .product_examples_section {
+                flex-wrap: wrap;
+            }
+
+            .product_example_image {
+                max-width: 50vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+        <div class='header_logo_container'>
+            <img src='./images/logo.svg' class='header_logo'>
+        </div>
+
+        <!-- Desktop Only Nav -->
+
+        <nav class='desktop_nav'>
+            <a class='header_link' href='#'>About</a>
+            <a class='header_link' href='#'>Services</a>
+            <a class='header_link' href='#'>Projects</a>
+            <button class='header_button header_button_desktop'>CONTACT</button>
+        </nav>
+
+        <!-- Desktop Only Nav Ends -->
+
+        <!-- Mobile Nav Starts -->
+
+        <div class='menu_icon_container'>
+            <span class='material-icons menu_icon' onclick="toggle_mobile_menu_navigation()">menu</span>
+        </div>
+
+        <nav class='mobile_nav'>
+            <div class='mobile_nav_container'>
+                <span class='right_angled_triangle_character'>◢</span>
+                <a class='header_link mobile_header_link' href='#'>About</a>
+                <a class='header_link mobile_header_link' href='#'>Services</a>
+                <a class='header_link mobile_header_link' href='#'>Projects</a>
+                <button class='header_button header_button_mobile header_link'>CONTACT</button>
+            </div>
+        </nav>
+
+        <!-- Mobile Nav Ends -->
+
+    </header>
+
+    <main>
+
+        <!-- Title Section  -->
+        <div class="top_main_section">
+            <h1 class="main_title section_title">WE ARE CREATIVES</h1>
+        </div>
+
+        <!-- Image And Text Combo Sections -->
+        <div class="image_text_combo_section section_1 image_text_separated">
+            <div class="text_container">
+                <h2 class="section_title text_image_combo_title">Tranform your brand</h2>
+                <span class="section_description text_image_combo_description">We are a full-service creative agency specializing in helping brands grow fast. Engage your clients through compelling visuals that do most of the marketing for you.</span>
+                <a href="#" class="learn_more_link">LEARN MORE</a>
+            </div>
+            <div class="image_container">
+                <!-- Image in the form of a background image -->
+            </div>
+        </div>
+        <div class="image_text_combo_section section_2 image_text_separated">
+            <div class="image_container">
+                <!-- Image in the form of a background image -->
+            </div>
+            <div class="text_container">
+                <h2 class="section_title text_image_combo_title">Stand out to the right audience</h2>
+                <span class="section_description text_image_combo_description">Using a collaborative formula of designers, researchers, photographers, videographers, and copywriters, we'll build and extend your brand in digital places.</span>
+                <a href="#" class="learn_more_link">LEARN MORE</a>
+            </div>
+        </div>
+        <div class="text_on_image_section_container image_text_combo_section">
+            <div class="text_on_image_section section_3">
+                <div class="image_container text_inside_image_container">
+                    <h2 class="section_title coloured_title text_inside_image_title">Graphic Design</h2>
+                    <span class="section_description coloured_description text_inside_image_description">Great design makes you memorable. We deliver artwork that underscores your brand message and captures potential clients' attention.</span>
+                </div>
+            </div>
+            <div class="text_on_image_section section_4">
+                <div class="image_container text_inside_image_container">
+                    <h2 class="section_title coloured_title text_inside_image_title">Photography</h2>
+                    <span class="section_description coloured_description text_inside_image_description">Increase your credibility by getting the most stunning, high-quality photos that improve your business image.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Area -->
+
+        <div class="testimonials_section">
+            <h2 class="section_title testimonials_opener_title">CLIENT TESTIMONIALS</h2>
+            <div class="testimonials_container">
+                <div class="testimonial">
+                    <img src="./images/image-emily.jpg" class="client_image">
+                    <span class="testimonial_description">We put our trust in Sunnyside and they delivered, making sure our needs were met and deadlines were always hit.</span>
+                    <div class="client_info">
+                        <h3 class="section_title client_name">Emily R.</h3>
+                        <span class="client_role">Marketing Director</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <img src="./images/image-thomas.jpg" class="client_image">
+                    <span class="testimonial_description">Sunnyside's enthusiasm coupled with their keen interest in our brand's success made it a satisfying and enjoyable experience.</span>
+                    <div class="client_info">
+                        <h3 class="section_title client_name">Thomas S.</h3>
+                        <span class="client_role">Chief Operating Officer</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <img src="./images/image-jennie.jpg" class="client_image">
+                    <span class="testimonial_description">Incredible end result! Our sales increased over 400% when we worked with Sunnyside. Highly recommended!</span>
+                    <div class="client_info">
+                        <h3 class="section_title client_name">Jennie F.</h3>
+                        <span class="client_role">Business Owner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Creations For Clients Examples -->
+
+        <div class="product_examples_section">
+            <img src="./images/desktop/image-gallery-milkbottles.jpg" class="product_example_image">
+            <img src="./images/desktop/image-gallery-orange.jpg" class="product_example_image">
+            <img src="./images//desktop/image-gallery-cone.jpg" class="product_example_image">
+            <img src="./images/desktop/image-gallery-sugarcubes.jpg" class="product_example_image">
+        </div>
+
+        <!-- Footer -->
+        
+        <footer>
+            <img src="./images/logo-green.svg" class="footer_logo">
+            <div class="footer_links">
+                <a href="#" class="footer_link">About</a>
+                <a href="#" class="footer_link">Services</a>
+                <a href="#" class="footer_link">Projects</a>
+            </div>
+            <div class="social_links">
+                <a href="#" class="social_link">
+                    <img src="./images/icon-facebook.svg" class="social_icon">
+                </a>
+                <a href="#" class="social_link">
+                    <img src="./images/icon-instagram.svg" class="social_icon">
+                </a>
+                <a href="#" class="social_link">
+                    <img src="./images/icon-twitter.svg" class="social_icon">
+                </a>
+                <a href="#" class="social_link">
+                    <img src="./images/icon-pinterest.svg" class="social_icon">
+                </a>
+            </div>
+        </footer>
+
+    </main>
+
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/MosElsh" target='_blank'>MosElsh</a>.
+    </div>
+    <script>
+        function toggle_mobile_menu_navigation() {
+            if (document.getElementsByClassName('menu_icon')[0].innerHTML == 'menu') {
+                document.getElementsByClassName('menu_icon')[0].innerHTML = 'close'
+                document.getElementsByClassName('mobile_nav')[0].style.display = 'block'
+                /* Max Height is set so that a tranition can be played. */
+                document.getElementsByClassName('mobile_nav')[0].style.maxHeight = String(document.getElementsByClassName('mobile_nav_container')[0].clientHeight + 16) + 'px'
+            }
+            else {
+                document.getElementsByClassName('menu_icon')[0].innerHTML = 'menu'
+                document.getElementsByClassName('mobile_nav')[0].style.maxHeight = 0
+                document.getElementsByClassName('mobile_nav')[0].style.display = 'none'
+            }
+        }
+    </script>
+</body>
+
+</html>

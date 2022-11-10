@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Frontend Mentor | Crowdfunding product page</title>
+</head>
+
+<body>
+    <header>
+        <div class="top_menu_bar">
+            <div class="header_logo_container">
+                <img src="./images/logo.svg" class="header_logo" alt="Crowdfund Logo">
+            </div>
+            <nav class="desktop_nav">
+                <div class="desktop_header_links_container header_links_container">
+                    <a href="#" class="desktop_header_link header_link">About</a>
+                    <a href="#" class="desktop_header_link header_link">Discover</a>
+                    <a href="#" class="desktop_header_link header_link">Get Started</a>
+                </div>
+            </nav>
+            <div class="menu_icon_container">
+                <span class="material-icons menu_icon" onclick="toggle_mobile_nav_display(this)">menu</span>
+            </div>
+        </div>
+        <div class="mobile_nav_container">
+            <nav class="mobile_nav">
+                <div class="mobile_header_links_container header_links_container">
+                    <a href="#" class="mobile_header_link header_link">About</a>
+                    <a href="#" class="mobile_header_link header_link">Discover</a>
+                    <a href="#" class="mobile_header_link header_link">Get Started</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main_content_container">
+            <div class="project_summary">
+                <div class="project_logo_container">
+                    <img src="./images/logo-mastercraft.svg" class="project_logo" alt="Mastercraft Logo">
+                </div>
+                <h2 class="section_title project_summary_title">Mastercraft Bamboo Monitor Riser</h2>
+                <span class="section_description project_summary_description">A beautiful & handcrafted monitor stand to reduce neck and eye strain.</span>
+                <div class="action_buttons_container">
+                    <button class="green_button back_project_button" onclick="toggle_modal_display()">Back this project</button>
+                    <div class="bookmark_section" onclick="toggle_bookmark(this.getElementsByTagName('img')[0])">
+                        <img src="./images/icon-bookmark.svg" class="bookmark_icon" alt="Bookmark" bookmarked="false">
+                        <span class="desktop_text bookmark_text">Bookmark</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project_figures">
+                <div class="figures_container">
+                    <div class="figures">
+                        <h1 class="section_title current_figure current_total">$89,914</h1>
+                        <span class="section_description figure_description">of $100,000 backed</span>
+                    </div>
+                    <hr class="figure_separator">
+                    <div class="figures">
+                        <h1 class="section_title current_figure">5,007</h1>
+                        <span class="section_description figure_description">total backers</span>
+                    </div>
+                    <hr class="figure_separator">
+                    <div class="figures">
+                        <h1 class="section_title current_figure">56</h1>
+                        <span class="section_description figure_description">days left</span>
+                    </div>
+                </div>
+                <div class="progress_container">
+                    <progress value="89914" max="100000"></progress>
+                </div>
+            </div>
+            <div class="about_project">
+                <h2 class="section_title about_project_title">About this project</h2>
+                <p class="section_description about_project_paragraph">
+                    The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen
+                    to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve
+                    your posture and make you more comfortable while at work, helping you stay focused on the task at hand.
+                </p>
+                <p class="section_description about_project_paragraph">
+                    Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer
+                    to allow notepads, pens, and USB sticks to be stored under the stand.
+                </p>
+                <div class="pledges">
+                    <div class="pledge pledge_1">
+                        <div class="pledge_info">
+                            <h3 class="section_title pledge_title">Bamboo Stand</h3>
+                            <span class="section_description pledge_cost">Pledge $25 or more</span>
+                        </div>
+                        <span class="section_description pledge_description">
+                            You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
+                            you’ll be added to a special Backer member list.
+                        </span>
+                        <div class="availability_container">
+                            <div class="model_availability">
+                                <strong class="current_figure numbers_left" style="color: black;">101</strong>
+                                <span class="section_description">left</span>
+                            </div>
+                            <button class="green_button select_reward_button" onclick="toggle_modal_display()">Select Reward</button>
+                        </div>
+                    </div>
+                    <div class="pledge pledge_2">
+                        <div class="pledge_info">
+                            <h3 class="section_title pledge_title">Black Edition Stand</h3>
+                            <span class="section_description pledge_cost">Pledge $75 or more</span>
+                        </div>
+                        <span class="section_description pledge_description">
+                            You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
+                            member list. Shipping is included.
+                        </span>
+                        <div class="availability_container">
+                            <div class="model_availability">
+                                <strong class="current_figure numbers_left" style="color: black;">64</strong>
+                                <span class="section_description">left</span>
+                            </div>
+                            <button class="green_button select_reward_button" onclick="toggle_modal_display()">Select Reward</button>
+                        </div>
+                    </div>
+                    <div class="pledge pledge_3 unavailable">
+                        <div class="pledge_info">
+                            <h3 class="section_title pledge_title">Mahogany Special Edition</h3>
+                            <span class="section_description pledge_cost">Pledge $200 or more</span>
+                        </div>
+                        <span class="section_description pledge_description">
+                            You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
+                            to our Backer member list. Shipping is included.
+                        </span>
+                        <div class="availability_container">
+                            <div class="model_availability">
+                                <strong class="current_figure numbers_left" style="color: black;">0</strong>
+                                <span class="section_description">left</span>
+                            </div>
+                            <button class="green_button select_reward_button" disabled onclick="toggle_modal_display()">Select Reward</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal">
+        <div class="about_project product_selection">
+            <div class="modal_top_section">
+                <h2 class="section_title about_project_title">Back this project</h2>
+                <span class="material-icons close_icon" onclick="toggle_modal_display()">close</span>
+            </div>
+            <p class="section_description about_project_paragraph">
+                Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
+            </p>
+            <div class="pledges">
+                <div class="pledge pledge_0">
+                    <div class="product_info">
+                        <div class="pledge_top_left_section">
+                            <div class="option">
+                                <input type="radio" name="product" class="bamboo" min_pledge="0" onclick="display_form(this.parentElement.parentElement.parentElement.parentElement, this.getAttribute('min_pledge'))">
+                                <div class="option_filler"></div>
+                            </div>
+                            <div class="pledge_info">
+                                <h3 class="section_title pledge_title">Pledge with no reward</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="section_description pledge_description">
+                        Choose to support us without a reward if you simply believe in our project. As a backer,
+                        you will be signed up to receive product updates via email.
+                    </span>
+                </div>
+                <div class="pledge pledge_1">
+                    <div class="product_info">
+                        <div class="pledge_top_left_section">
+                            <div class="option">
+                                <input type="radio" name="product" class="bamboo" min_pledge="25" onclick="display_form(this.parentElement.parentElement.parentElement.parentElement, this.getAttribute('min_pledge'))">
+                                <div class="option_filler"></div>
+                            </div>
+                            <div class="pledge_info">
+                                <h3 class="section_title pledge_title">Bamboo Stand</h3>
+                                <span class="section_description pledge_cost">Pledge $25 or more</span>
+                            </div>
+                        </div>
+                        <div class="availability_container desktop_display">
+                            <div class="model_availability">
+                                <strong class="current_figure numbers_left" style="color: black;">101</strong>
+                                <span class="section_description">left</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="section_description pledge_description">
+                        You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
+                        you’ll be added to a special Backer member list.
+                    </span>
+                    <div class="availability_container mobile_display">
+                        <div class="model_availability">
+                            <strong class="current_figure numbers_left" style="color: black;">101</strong>
+                            <span class="section_description">left</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pledge pledge_2">
+                    <div class="product_info">
+                        <div class="pledge_top_left_section">
+                            <div class="option">
+                                <input type="radio" name="product" class="black_edition" min_pledge="75" onclick="display_form(this.parentElement.parentElement.parentElement.parentElement, this.getAttribute('min_pledge'))">
+                                <div class="option_filler"></div>
+                            </div>
+                            <div class="pledge_info">
+                                <h3 class="section_title pledge_title">Black Edition Stand</h3>
+                                <span class="section_description pledge_cost">Pledge $75 or more</span>
+                            </div>
+                        </div>
+                        <div class="availability_container desktop_display">
+                            <div class="model_availability">
+                                <strong class="current_figure numbers_left" style="color: black;">64</strong>
+                                <span class="section_description">left</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="section_description pledge_description">
+                        You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
+                        member list. Shipping is included.
+                    </span>
+                    <div class="availability_container mobile_display">
+                        <div class="model_availability">
+                            <strong class="current_figure numbers_left" style="color: black;">64</strong>
+                            <span class="section_description">left</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pledge pledge_3 unavailable">
+                    <div class="product_info">
+                        <div class="pledge_top_left_section">
+                            <div class="option">
+                                <input type="radio" name="product" class="mahogany_special" min_pledge="200" disabled onclick="display_form(this.parentElement.parentElement.parentElement.parentElement, this.getAttribute('min_pledge'))">
+                                <div class="option_filler"></div>
+                            </div>
+                            <div class="pledge_info">
+                                <h3 class="section_title pledge_title">Mahogany Special Edition</h3>
+                                <span class="section_description pledge_cost">Pledge $200 or more</span>
+                            </div>
+                        </div>
+                        <div class="availability_container desktop_display">
+                            <div class="model_availability">
+                                <strong class="current_figure numbers_left" style="color: black;">0</strong>
+                                <span class="section_description">left</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="section_description pledge_description">
+                        You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
+                        to our Backer member list. Shipping is included.
+                    </span>
+                    <div class="availability_container mobile_display">
+                        <div class="model_availability">
+                            <strong class="current_figure numbers_left" style="color: black;">0</strong>
+                            <span class="section_description">left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img src="./images/icon-check.svg" style="display: none;" class="green_tick">
+
+    <footer>
+        <div class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+            Coded by <a href="https://github.com/MosElsh" target='_blank'>MosElsh</a>.
+        </div>
+    </footer>
+    <script src="./mobile_functions.js"></script>
+    <script src="./core_functions.js"></script>
+</body>
+
+</html>

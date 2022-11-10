@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Frontend Mentor | Todo App</title>
+</head>
+
+<body class="dark">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <main>
+        <article class="top_section dark">
+            <section class="title_container dark">
+                <h1 class="title dark">TODO</h1>
+            </section>
+            <section class="theme_switcher_container dark">
+                <img src="./images/icon-sun.svg" class="theme_switcher dark" onclick="toggle_theme_mode()">
+            </section>
+        </article>
+        <article class="tasks_section dark">
+            <!-- 
+                React <TaskList /> Component Here.
+            -->
+        </article>
+        <article class="task_metadata dark">
+            <section class="tasks_remaining_container dark">
+                <!-- {number} items left -->
+                <span class="tasks_remaining dark"></span>
+            </section>
+            <section class="filters_section desktop dark">
+                <span class="filter dark" onclick="filter_chosen_tasks(this, 'all')">All</span>
+                <span class="filter dark" onclick="filter_chosen_tasks(this, 'incomplete')">Active</span>
+                <span class="filter dark" onclick="filter_chosen_tasks(this, 'complete')">Completed</span>
+            </section>
+            <section class="remove_completed_container dark">
+                <span class="remove_completed dark" onclick="remove_completed_tasks()">Clear completed</span>
+            </section>
+        </article>
+        <article class="filters_section mobile dark">
+            <span class="filter dark" onclick="filter_chosen_tasks(this, 'all')">All</span>
+            <span class="filter dark" onclick="filter_chosen_tasks(this, 'incomplete')">Active</span>
+            <span class="filter dark" onclick="filter_chosen_tasks(this, 'complete')">Completed</span>
+        </article>
+        <article class="bottom_section dark">
+            <span>Drag and drop to reorder list</span>
+        </article>
+    </main>
+
+    <div class="attribution dark">
+        Challenge by <a class="dark" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a class="dark" href="https://github.com/MosElsh">MosElsh</a>.
+    </div>
+</body>
+
+<script>
+    function set_theme_mode(theme_mode) {
+        localStorage.setItem("theme_mode", theme_mode)
+        return
+    }
+
+    set_initial_theme_mode()
+
+    function set_initial_theme_mode() {
+
+        set_theme_mode("dark")
+        change_theme("light", "dark")
+
+        return
+    }
+
+    function change_theme(change_from, change_to) {
+        document.querySelectorAll("." + change_from).forEach((element) => {
+                element.setAttribute("class", element.className.replace(change_from, change_to))
+            })
+    }
+
+    function toggle_theme_mode() {
+
+        if (document.querySelector(".theme_switcher").src.indexOf("icon-moon.svg") != -1) {
+            document.querySelector(".theme_switcher").src = "./images/icon-sun.svg"
+            change_theme("light", "dark")
+            set_theme_mode("dark")
+        }
+        else {
+            document.querySelector(".theme_switcher").src = "./images/icon-moon.svg"
+            change_theme("dark", "light")
+            set_theme_mode("light")
+        }
+
+        return
+    }
+
+    function remove_old_filter_chosen() {
+        
+        if (document.querySelector(".chosen") != null) {
+            document.querySelector(".chosen").setAttribute("class", "filter")
+        }
+
+        return
+    }
+
+    function specific_tasks_display(querySelectorString, display_style) {
+
+        let specific_tasks = document.querySelectorAll(querySelectorString)
+        specific_tasks.forEach((task) => {
+            task.style.display = display_style
+        })
+
+        return
+    }
+
+    function filter_chosen_tasks(element_clicked, type_of_tasks) {
+
+        remove_old_filter_chosen()
+        element_clicked.setAttribute("class", "filter chosen")
+        specific_tasks_display(".task", "none")
+
+        if (type_of_tasks == "incomplete") {
+            specific_tasks_display(".task[data-completed='false']", "flex")
+        }
+        else if (type_of_tasks == "complete") {
+            specific_tasks_display(".task[data-completed='true']", "flex")
+        }
+        else {
+            specific_tasks_display(".task", "flex")
+        }
+
+        return
+    }
+
+    function remove_completed_tasks() {
+
+        document.querySelectorAll(".task[data-completed='true']").forEach((task) => {
+            task.remove()
+        })
+
+        return
+    }
+
+    function update_tasks_remaining() {
+        document.getElementsByClassName("tasks_remaining")[0].innerHTML = String(document.querySelectorAll(".task[data-completed='false']").length) + " items left"
+        return
+    }
+
+    setInterval(update_tasks_remaining, 100)
+</script>
+
+</html>
